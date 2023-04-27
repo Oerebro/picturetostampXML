@@ -4,25 +4,25 @@ import java.io.IOException;
 
 public class PictureToXMLConverter {
     public static void main(String[] args) {
+
+        System.out.println("Usage: java PictureToXMLConverter <DungeonBuilder Installation Directory> <Image Scale> <Artist> <Artist Website> <Folder Name of Assets> <Category>");
+
         // Get the directory path from command line arguments
-        if (args.length > 6 || args.length < 4) {
-            System.out.println("Usage: java PictureToXMLConverter <DungeonBuilder Installation Directory> <Folder Name of Assets> <Category> <Image Scale> <Artist> <Artist Website>");
-            System.out.println("C:\\Users\\example\\Documents\\Dungeon Builder Epicisometric BrickCottages EpicIsometric epicisometric.com");
+        if (args.length != 6) {
+            System.out.println("Missing Arguments!");
             System.exit(1);
         }
 
-        String folderName = args[1];
-        String category = args[2];
-        String artist = args[4];
-        int scale = Integer.valueOf(args[3]);
+
+        int scale = Integer.parseInt(args[1]);
+        String artist = args[2];
+        String artistWebsite = args[3];
+        String folderName = args[4];
+        String category = args[5];
+
         String directoryPath = args[0] + "\\Custom\\Art\\Build\\" + folderName + "\\" + category;
         String writeTo = args[0] + "\\Custom\\Art Definitions\\Build\\" + folderName + "\\" + category;
 
-        String artistWebsite = "No Website";
-
-        if (args.length == 6){
-            artistWebsite = args[5];
-        }
 
         // Get all files in the directory
         File directory = new File(directoryPath);
